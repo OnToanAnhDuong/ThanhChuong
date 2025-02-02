@@ -2,9 +2,9 @@ const GITHUB_SAVE_PROGRESS_URL = 'https://api.github.com/repos/OnToanAnhDuong/Th
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN; // ✅ Biến môi trường chỉ được dùng trên server-side
 
 export default async function handler(req, res) {
-    if (!GITHUB_TOKEN) {
-        console.error("❌ Lỗi: GITHUB_TOKEN chưa được thiết lập trên server!");
-        return res.status(500).json({ error: "GITHUB_TOKEN chưa tồn tại. Kiểm tra biến môi trường trên Vercel." });
+    if (!GITHUB_TOKEN_T6) {
+        console.error("❌ Lỗi: GITHUB_TOKEN_T6 chưa được thiết lập trên server!");
+        return res.status(500).json({ error: "GITHUB_TOKEN_T6 chưa tồn tại. Kiểm tra biến môi trường trên Vercel." });
     }
 
     if (req.method !== 'POST') {
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
         const shaResponse = await fetch(GITHUB_SAVE_PROGRESS_URL, {
             headers: {
                 'Accept': 'application/vnd.github.v3+json',
-                'Authorization': `Bearer ${GITHUB_TOKEN}`
+                'Authorization': `Bearer ${GITHUB_TOKEN_T6}`
             }
         });
 
@@ -59,7 +59,7 @@ export default async function handler(req, res) {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${GITHUB_TOKEN}`
+                'Authorization': `Bearer ${GITHUB_TOKEN_T6}`
             },
             body: JSON.stringify({
                 message: `Cập nhật tiến trình học sinh ${studentId}`,
