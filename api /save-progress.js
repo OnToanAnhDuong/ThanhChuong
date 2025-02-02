@@ -1,6 +1,6 @@
 
 const GITHUB_SAVE_PROGRESS_URL = 'https://api.github.com/repos/ToanTHCS/ThuTiXem/contents/progress.json';
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN_T6; // ✅ Biến môi trường chỉ được dùng trên server-side
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN; // ✅ Biến môi trường chỉ được dùng trên server-side
 
 export default async function handler(req, res) {
     if (!GITHUB_TOKEN) {
