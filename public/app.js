@@ -799,15 +799,19 @@ async function displayProblemList() {
                 problemBox.textContent = problemIndex;
                 problemBox.className = 'problem-box';
 
-                function updateProblemColor() {
-                    if (progressData[problemIndex]) {
-                        problemBox.style.backgroundColor = 'green'; // ✅ Bài đã hoàn thành
-                    } else if (problemIndex === currentProblemIndex) {
-                        problemBox.style.backgroundColor = 'blue'; // ✅ Bài đang làm
-                    } else {
-                        problemBox.style.backgroundColor = 'yellow'; // ✅ Bài chưa làm
-                    }
-                }
+        function updateProblemColor() {
+    		const problemBoxes = document.querySelectorAll('.problem-box');
+   	 	problemBoxes.forEach(box => {
+       		 const index = parseInt(box.textContent);
+        	if (progressData[index]) {
+            box.style.backgroundColor = 'green'; // ✅ Bài đã hoàn thành
+        } else if (index === currentProblemIndex) {
+            box.style.backgroundColor = 'blue'; // ✅ Bài đang làm
+        } else {
+            box.style.backgroundColor = 'yellow'; // ✅ Bài chưa làm
+        }
+   	 });
+	}
 
                 updateProblemColor(); // Cập nhật màu ngay khi hiển thị
 
