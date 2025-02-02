@@ -104,14 +104,7 @@ function displayProblemByIndex(index) {
         document.getElementById('problemText').innerHTML = formatProblemText(selectedProblem.problem);
 
         // ✅ Đánh dấu bài đang làm màu `blue`, nhưng không lưu tiến trình
-        const problemBoxes = document.querySelectorAll('.problem-box');
-        problemBoxes.forEach(box => {
-            if (parseInt(box.textContent) === index) {
-                box.style.backgroundColor = 'blue';
-            } else {
-                box.style.backgroundColor = progressData[box.textContent] ? 'green' : 'yellow';
-            }
-        });
+        updateProblemColor();
 
         MathJax.typesetPromise([document.getElementById('problemText')]).catch(function (err) {
             console.error('MathJax rendering error:', err);
@@ -120,6 +113,7 @@ function displayProblemByIndex(index) {
         document.getElementById('problemText').textContent = `Không tìm thấy bài tập với số thứ tự ${index}.`;
     }
 }
+
 
         function formatProblemText(problemText) {
             return problemText.replace(/\n/g, '<br>').replace(/([a-d]\))/g, '<br>$1');
